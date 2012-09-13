@@ -4,6 +4,6 @@ Bigint [![Build Status](https://secure.travis-ci.org/ChrisBuchholz/Bigint.png)](
 Bigint is a simple library I have created to carry a number with the trades
 of an integer, but with an, seemingly, infinite length.
 
-It's immature and I have only created, and is so far only using it to solve
-the [Project Euler](http://projecteuler.net/problems) problems that needs can
-only be solved by calculating with big, big numbers.
+Bigint is immature and I have only created it, and is so far only using it, to
+solve the [Project Euler](http://projecteuler.net/problems) problems that one
+can only solve if he is able to calculate with big, big numbers.
