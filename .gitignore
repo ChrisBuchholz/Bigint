@@ -1,0 +1,5 @@
+.*.swp
+.DS_Store
+src/bigint.o
+tests/test
+*.dSYM
