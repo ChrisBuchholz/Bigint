@@ -18,16 +18,16 @@ class Bigint {
 		Bigint& operator+(Bigint &);
 		Bigint operator+(int);
 
-		Bigint(); // NULL construction
+        Bigint(); // NULL construction
         Bigint(const int &); // giving int
-		Bigint(const std::string &); // giving string of numbers
+        Bigint(const std::string &); // giving string of numbers
         Bigint(const std::vector<int> &); // giving vector of ints
-		Bigint(const Bigint &); // copy
+        Bigint(const Bigint &); // copy
 
-		friend std::ostream &operator<<(std::ostream &, Bigint &);
+        friend std::ostream &operator<<(std::ostream &, Bigint &);
         friend bool operator==(const Bigint &first, const Bigint &last);
 
-		std::string to_string() const;
+        std::string to_string() const;
         std::vector<int> to_vector() const;
 };
 
