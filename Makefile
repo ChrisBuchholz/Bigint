@@ -1,7 +1,7 @@
 CC       = 	clang++
 CXXFLAGS = 	-std=c++11 -stdlib=libc++ -g -Wall
 
-all: prepare bigint test
+all: prepare bigint
 
 prepare:
 	@mkdir -p build/Bigint/include/ build/Bigint/lib/
@@ -19,6 +19,7 @@ test:
 		-o tests/test \
 		build/Bigint/lib/bigint.o \
 		/usr/local/lib/boost/libboost_unit_test_framework.a
+	./tests/test
 
 clean:
 	rm -rfv build/
