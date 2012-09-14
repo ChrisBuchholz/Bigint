@@ -1,10 +1,17 @@
+
+
 CC       = 	clang++
 CXXFLAGS = 	-std=c++11 -stdlib=libc++ -g -Wall
 
-all: bigint test
+all: prepare bigint test
+
+prepare:
+	@mkdir -p build/Bigint/include/ build/Bigint/lib/
+	@cp LICENSE build/Bigint/
 
 bigint: src/bigint.cpp
-	$(CC) $(CXXFLAGS) -c src/bigint.cpp -o src/bigint.o
+	$(CC) $(CXXFLAGS) -c src/bigint.cpp -o build/Bigint/lib/bigint.o
+	@cp src/bigint.h build/Bigint/include/
 
 test:
 	$(CC) $(CXXFLAGS) \
@@ -12,10 +19,11 @@ test:
 		tests/arithmetic.cpp \
 		tests/assignment.cpp \
 		-o tests/test \
-		src/bigint.o /usr/local/lib/boost/libboost_unit_test_framework.a
+		build/Bigint/lib/bigint.o \
+		/usr/local/lib/boost/libboost_unit_test_framework.a
 
 clean:
-	rm -v src/bigint.o
+	rm -rfv build/
 	rm -v tests/test
 
 .PHONY: clean
