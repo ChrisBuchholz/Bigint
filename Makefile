@@ -11,18 +11,18 @@ bigint: src/bigint.cpp
 	$(CC) $(CXXFLAGS) -c src/bigint.cpp -o build/Bigint/lib/bigint.o
 	@cp src/bigint.h build/Bigint/include/
 
-test:
+tests:
 	$(CC) $(CXXFLAGS) \
 		tests/test.cpp \
 		tests/arithmetic.cpp \
 		tests/assignment.cpp \
-		-o tests/test \
+		-o tests/run_tests \
 		build/Bigint/lib/bigint.o \
 		/usr/local/lib/boost/libboost_unit_test_framework.a
-	./tests/test
+	./tests/run_tests
 
 clean:
 	rm -rfv build/
-	rm -v tests/test
+	rm -v tests/run_tests
 
-.PHONY: clean
+.PHONY: all tests clean
