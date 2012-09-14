@@ -1,5 +1,3 @@
-
-
 CC       = 	clang++
 CXXFLAGS = 	-std=c++11 -stdlib=libc++ -g -Wall
 
