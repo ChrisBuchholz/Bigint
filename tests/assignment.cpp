@@ -33,14 +33,13 @@
 
 Bigint fromBigint(Bigint n)
 {
-	Bigint a = n;
-	return a;
+	return n;
 }
 
 Bigint fromString(std::string str)
 {
-	Bigint a = str;
-	return a;
+	Bigint n = str;
+	return n;
 }
 
 Bigint fromInt(int n)
@@ -51,7 +50,10 @@ Bigint fromInt(int n)
 
 BOOST_AUTO_TEST_CASE(assignment)
 {
-	BOOST_CHECK(fromBigint(4) == 4);
-	BOOST_CHECK(fromString("4") == 4);
+    BOOST_CHECK(fromBigint(4) == 4);
+    BOOST_CHECK(fromBigint(-4) == -4);
+    BOOST_CHECK(fromString("4") == 4);
+    BOOST_CHECK(fromString("-4") == -4);
 	BOOST_CHECK(fromInt(4) == 4);
+    BOOST_CHECK(fromInt(-4) == -4);
 }

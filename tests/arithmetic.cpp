@@ -32,10 +32,22 @@
 
 Bigint addition(Bigint i, Bigint j)
 {
+    std::cout << i << "+" << j << "=" << i+j << std::endl;
 	return i + j;
+}
+
+Bigint subtraction(Bigint i, Bigint j)
+{
+    std::cout << i << "-" << j << "=" << i-j << std::endl;
+	return i - j;
 }
 
 BOOST_AUTO_TEST_CASE(arithmetic)
 {
-	BOOST_CHECK(addition(2, 2) == 4);
+    BOOST_CHECK(addition(2, 2) == 4);
+    //BOOST_CHECK(addition(-5, 9) == 4); // fails because of missing double *-1
+    //BOOST_CHECK(addition(-2, -2) == -4); // fails because missing *-1 and failty comparison
+    BOOST_CHECK(subtraction(10, 7) == 3);
+    //BOOST_CHECK(subtraction(-10, -13) == 3); // fails becaue of missing *-1
+    //BOOST_CHECK(subtraction(5, 8) == -3); // failed because of faulty comparison
 }

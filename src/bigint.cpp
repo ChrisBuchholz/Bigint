@@ -24,28 +24,38 @@
  * Source Code: https://github.com/ChrisBuchholz/Bigint
  **/
 
-#include "bigint.h"
 #include <iostream>
 #include <vector>
 #include <string>
 #include <ostream>
+#include "bigint.h"
+
+Bigint &Bigint::operator=(const Bigint &num)
+{
+    return *this;
+}
 
 Bigint &Bigint::operator=(const std::string &strNum)
 {
     std::string::const_iterator i;
 
     if (strNum[0] == '-') {
-        this->isSigned = false;
+        this->isPositive = false;
         i = strNum.begin() + 1;
     }
     else {
-        this->isSigned = true;
         i = strNum.begin();
     }
 
     for (; i != strNum.end(); ++i)
         this->number.push_back(*i - '0');
 
+    return *this;
+}
+
+Bigint& Bigint::operator=(const int num)
+{
+    *this = std::to_string(num);
     return *this;
 }
 
@@ -79,13 +89,75 @@ Bigint& Bigint::operator+(Bigint &num)
         }
     }
 
-    return *(new Bigint(big_num));
+    Bigint *new_num = new Bigint(big_num); 
+
+    //if (num.to_string()[0] == '-' || !this->isPositive) {
+        //new_num = new_num * -1;
+    //}
+
+    return *new_num;
+}
+
+Bigint& Bigint::operator+(const int num)
+{
+    *this + *(new Bigint(num));
+    return *this;
+}
+
+Bigint& Bigint::operator-(Bigint &num)
+{
+    std::vector<int> big_num, lil_num;
+
+    if (num.to_vector().size() > this->number.size()) {
+        big_num = num.to_vector();
+        lil_num = this->to_vector();
+    }
+    else {
+        big_num = this->to_vector();
+        lil_num = num.to_vector();
+    }
+
+    std::vector<int>::reverse_iterator k;
+    std::vector<int>::const_reverse_iterator j;
+
+    for (k = big_num.rbegin(), j = lil_num.rbegin();
+            j != lil_num.rend(); ++k, ++j) {
+        if (*j > *k) {
+            if (k == big_num.rend() - 1) {
+                this->isPositive = false;
+            }
+            else {
+                *(k+1) -= 1;
+                *k += 10;
+            }
+        }
+        *k -= *j;
+    }
+
+    for (std::vector<int>::iterator i = big_num.begin();
+            i != big_num.end(); ++i) {
+        if (*i == 0)
+            i = big_num.erase(i);
+    }
+
+    Bigint *new_num = new Bigint(big_num); 
+
+    //if (num.to_string()[0] == '-' || !this->isPositive) {
+        //new_num = new_num * -1;
+    //}
+
+    return *new_num;
+}
+
+Bigint& Bigint::operator-(const int num)
+{
+    *this - *(new Bigint(num));
+    return *this;
 }
 
 Bigint::Bigint(const int &num)
 {
-    std::string str = std::to_string(num);
-    *this = str;
+    *this = num;
 }
 
 Bigint::Bigint(const std::string &strNum)
@@ -93,11 +165,10 @@ Bigint::Bigint(const std::string &strNum)
     std::string::const_iterator i;
 
     if (strNum[0] == '-') {
-        this->isSigned = false;
+        this->isPositive = false;
         i = strNum.begin() + 1;
     }
     else {
-        this->isSigned = true;
         i = strNum.begin();
     }
 
@@ -116,7 +187,8 @@ Bigint::Bigint(const Bigint &num)
     for (int i : num.to_vector())
         this->number.push_back(i);
 
-    this->isSigned = false; 
+    if (num.to_string()[0] == '-')
+        this->isPositive = false; 
 }
 
 std::ostream &operator<<(std::ostream &os, Bigint &num)
@@ -126,22 +198,21 @@ std::ostream &operator<<(std::ostream &os, Bigint &num)
 
 bool operator==(const Bigint &first, const Bigint &last)
 {
-    bool rtrn = true;
-    std::vector<int> firstv = first.to_vector();
-    std::vector<int> lastv = last.to_vector();
+    std::string firstStr = first.to_string();
+    std::string lastStr = last.to_string();
 
-    for (std::vector<int>::const_iterator i = firstv.begin(), j = lastv.begin();
-            i < firstv.end(), j < lastv.end(); ++i, ++j) {
-        if (*i != *j)
-            rtrn = false;
-    }
+    if (firstStr != lastStr)
+        return false;
 
-    return rtrn;
+    return true;
 }
 
 std::string Bigint::to_string() const
 {
     std::string str;
+
+    if (!this->isPositive)
+        str = '-';
 
     for (std::vector<int>::const_iterator i = this->number.begin();
             i != this->number.end(); ++i)

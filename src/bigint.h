@@ -34,7 +34,7 @@
 
 class Bigint {
 	private:
-		bool isSigned;
+		bool isPositive = true;
 		std::vector<int> number; 
 
 	public:
@@ -42,7 +42,9 @@ class Bigint {
 		Bigint& operator=(const std::string &);
 		Bigint& operator=(const int);
 		Bigint& operator+(Bigint &);
-		Bigint operator+(int);
+		Bigint& operator+(const int);
+		Bigint& operator-(Bigint &);
+		Bigint& operator-(const int);
 
         Bigint(); // NULL construction
         Bigint(const int &); // giving int
