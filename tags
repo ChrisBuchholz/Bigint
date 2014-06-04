@@ -1,0 +1,41 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+BIGINT_H	build/Bigint/include/bigint.h	/^#define BIGINT_H$/;"	d
+BIGINT_H	src/bigint.h	/^#define BIGINT_H$/;"	d
+BOOST_AUTO_TEST_CASE	tests/arithmetic.cpp	/^BOOST_AUTO_TEST_CASE(arithmetic)$/;"	f
+BOOST_AUTO_TEST_CASE	tests/assignment.cpp	/^BOOST_AUTO_TEST_CASE(assignment)$/;"	f
+BOOST_TEST_MODULE	tests/arithmetic.cpp	/^#define BOOST_TEST_MODULE /;"	d	file:
+BOOST_TEST_MODULE	tests/assignment.cpp	/^#define BOOST_TEST_MODULE /;"	d	file:
+BOOST_TEST_MODULE	tests/test.cpp	/^#define BOOST_TEST_MODULE /;"	d	file:
+Bigint	build/Bigint/include/bigint.h	/^class Bigint {$/;"	c
+Bigint	src/bigint.cpp	/^Bigint::Bigint(const Bigint &num)$/;"	f	class:Bigint
+Bigint	src/bigint.cpp	/^Bigint::Bigint(const int &num)$/;"	f	class:Bigint
+Bigint	src/bigint.cpp	/^Bigint::Bigint(const std::string &strNum)$/;"	f	class:Bigint
+Bigint	src/bigint.cpp	/^Bigint::Bigint(const std::vector<int> &vnum)$/;"	f	class:Bigint
+Bigint	src/bigint.h	/^class Bigint {$/;"	c
+CC	Makefile	/^CC       = 	clang++$/;"	m
+CXXFLAGS	Makefile	/^CXXFLAGS = 	-std=c++11 -stdlib=libc++ -g -Wall$/;"	m
+addition	tests/arithmetic.cpp	/^Bigint addition(Bigint i, Bigint j)$/;"	f
+fromBigint	tests/assignment.cpp	/^Bigint fromBigint(Bigint n)$/;"	f
+fromInt	tests/assignment.cpp	/^Bigint fromInt(int n)$/;"	f
+fromString	tests/assignment.cpp	/^Bigint fromString(std::string str)$/;"	f
+isPositive	build/Bigint/include/bigint.h	/^		bool isPositive = true;$/;"	m	class:Bigint
+isPositive	src/bigint.h	/^		bool isPositive = true;$/;"	m	class:Bigint
+number	build/Bigint/include/bigint.h	/^		std::vector<int> number; $/;"	m	class:Bigint
+number	src/bigint.h	/^		std::vector<int> number; $/;"	m	class:Bigint
+operator +	src/bigint.cpp	/^Bigint& Bigint::operator+(Bigint &num)$/;"	f	class:Bigint
+operator +	src/bigint.cpp	/^Bigint& Bigint::operator+(const int num)$/;"	f	class:Bigint
+operator -	src/bigint.cpp	/^Bigint& Bigint::operator-(Bigint &num)$/;"	f	class:Bigint
+operator -	src/bigint.cpp	/^Bigint& Bigint::operator-(const int num)$/;"	f	class:Bigint
+operator <<	src/bigint.cpp	/^std::ostream &operator<<(std::ostream &os, Bigint &num)$/;"	f
+operator =	src/bigint.cpp	/^Bigint &Bigint::operator=(const Bigint &num)$/;"	f	class:Bigint
+operator =	src/bigint.cpp	/^Bigint &Bigint::operator=(const std::string &strNum)$/;"	f	class:Bigint
+operator =	src/bigint.cpp	/^Bigint& Bigint::operator=(const int num)$/;"	f	class:Bigint
+operator ==	src/bigint.cpp	/^bool operator==(const Bigint &first, const Bigint &last)$/;"	f
+subtraction	tests/arithmetic.cpp	/^Bigint subtraction(Bigint i, Bigint j)$/;"	f
+to_string	src/bigint.cpp	/^std::string Bigint::to_string() const$/;"	f	class:Bigint
+to_vector	src/bigint.cpp	/^std::vector<int> Bigint::to_vector() const$/;"	f	class:Bigint
